@@ -42,14 +42,28 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 
 ```
 
-```{r agg, echo=FALSE}
-barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, main = "Emissions by Year",
-        xlab = "Year", ylab = "Emissions (Megatons)")
+## Question 2
+Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510"| fips=="24510") from 1999 to 2008? Use the base plotting system to make a plot answering this question.
+ 
+## Answer 2 - see plot2.R and plot2.png
+Yes, the overall emissions have decreased in Baltimore.
+
+```{r agg, echo = TRUE}
+# baltimore data
+baltimore <- subset(NEI, fips=="24510")
+
+# sum the emissions from NEI, by year
+agg <-  aggregate(Emissions ~ year, baltimore, sum)
+
+# show emissions in tons
+agg$Emissions <- agg$Emissions / 10^3
+
+# plot
+barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, main = "Baltimore Emissions by Year",
+        xlab = "Year", ylab = "Emissions (Tons)")
+
 ```
 
-
-- Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510"| fips=="24510") from 1999 to 2008? Use the base plotting system to make a plot answering this question.
- 
 - Of the four types of sources indicated by the (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? Which have seen increases in emissions from 1999–2008? Use the ggplot2 plotting system to make a plot answer this question.
  
 - Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
