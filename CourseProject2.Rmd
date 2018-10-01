@@ -69,8 +69,21 @@ Of the four types of sources indicated by the (point, nonpoint, onroad, nonroad)
  
 ## Answer 3 - see plot3.R and plot3.png
 Decreases: Non-Road, Non-point, on-road
-Increases: 
+Increases: point
 
+```{r agg, echo = TRUE}
+# baltimore data
+baltimore <- subset(NEI, fips=="24510")
+baltimore$Emissions <- baltimore$Emissions / 10^3
+
+# plot
+plot3 <- ggplot(data = baltimore, aes(x = factor(year), y = Emissions, fill = type)) +
+    facet_grid(.~type) + 
+    geom_bar(stat = "identity") +
+    guides(fill = FALSE) +
+    labs(x = "Year", y = "Emissions (Tons)", title = "Emissions in Baltimore By Type") 
+
+```
 
 - Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
 
