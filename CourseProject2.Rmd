@@ -68,8 +68,9 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 Of the four types of sources indicated by the (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? Which have seen increases in emissions from 1999–2008? Use the ggplot2 plotting system to make a plot answer this question.
  
 ## Answer 3 - see plot3.R and plot3.png
-Decreases: Non-Road, Non-point, on-road
-Increases: point
+Decreases: Non-Road, Non-point, On-road
+
+Increases: Point
 
 ```{r agg, echo = TRUE}
 # baltimore data
