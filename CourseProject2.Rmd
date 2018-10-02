@@ -42,6 +42,8 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 
 ```
 
+knitr::include_graphics("plot1.png")
+
 ## Question 2
 Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510"| fips=="24510") from 1999 to 2008? Use the base plotting system to make a plot answering this question.
  
@@ -64,6 +66,8 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 
 ```
 
+knitr::include_graphics("plot2.png")
+
 ## Question 3
 Of the four types of sources indicated by the (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? Which have seen increases in emissions from 1999–2008? Use the ggplot2 plotting system to make a plot answer this question.
  
@@ -85,6 +89,8 @@ plot3 <- ggplot(data = baltimore, aes(x = factor(year), y = Emissions, fill = ty
     labs(x = "Year", y = "Emissions (Tons)", title = "Emissions in Baltimore By Type") 
 
 ```
+
+knitr::include_graphics("plot3.png")
 
 ## Question 4
 Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
@@ -109,6 +115,8 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
         xlab = "Year", ylab = "Emissions (Tons)")
 
 ```
+
+knitr::include_graphics("plot4.png")
 
 
 - How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
