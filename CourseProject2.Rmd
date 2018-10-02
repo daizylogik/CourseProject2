@@ -27,8 +27,9 @@ You must address the following questions and tasks in your exploratory analysis.
 ## Question 1 
 Have total emissions from PM2.5 decreased in the United States from 1999 to 2008? Using the base plotting system, make a plot showing the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
 
-## Answer 1 - see plot1.R and plot1.png
+## Answer 1 
 Yes, the total emissions have decreased.
+
 ```{r agg, echo = TRUE}
 # sum the emissions from NEI, by year
 agg <-  aggregate(Emissions ~ year, NEI, sum)
@@ -42,12 +43,12 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 
 ```
 
-knitr::include_graphics("plot1.png")
+![plot1.png](plot1.png)
 
 ## Question 2
 Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (fips == "24510"| fips=="24510") from 1999 to 2008? Use the base plotting system to make a plot answering this question.
  
-## Answer 2 - see plot2.R and plot2.png
+## Answer 2 
 Yes, the overall emissions have decreased in Baltimore.
 
 ```{r agg, echo = TRUE}
@@ -66,12 +67,12 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 
 ```
 
-knitr::include_graphics("plot2.png")
+![plot2.png](plot2.png)
 
 ## Question 3
 Of the four types of sources indicated by the (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? Which have seen increases in emissions from 1999–2008? Use the ggplot2 plotting system to make a plot answer this question.
  
-## Answer 3 - see plot3.R and plot3.png
+## Answer 3
 Decreases: Non-Road, Non-point, On-road
 
 Increases: Point
@@ -90,12 +91,12 @@ plot3 <- ggplot(data = baltimore, aes(x = factor(year), y = Emissions, fill = ty
 
 ```
 
-knitr::include_graphics("plot3.png")
+![plot3.png](plot3.png)
 
 ## Question 4
 Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
 
-## Answer 4 - see plot4.R and plot4.png
+## Answer 4 
 Yes, the pm 25 coal emissions have decreased from from 1999 to 2008
 
 ```{r agg, echo = TRUE}
@@ -116,7 +117,7 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 
 ```
 
-knitr::include_graphics("plot4.png")
+![plot4.png](plot4.png)
 
 
 - How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
