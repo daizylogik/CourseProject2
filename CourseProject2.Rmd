@@ -86,7 +86,30 @@ plot3 <- ggplot(data = baltimore, aes(x = factor(year), y = Emissions, fill = ty
 
 ```
 
-- Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
+## Question 4
+Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
+
+## Answer 4 - see plot4.R and plot4.png
+Yes, the pm 25 coal emissions have decreased from from 1999 to 2008
+
+```{r agg, echo = TRUE}
+# data
+merged <- merge(NEI, SCC, by = "SCC")
+merged <- data.table(merged)
+coal <- merged[Short.Name %like% "Coal"]
+
+# display data in tons
+coal$Emissions <- coal$Emissions / 10^3
+
+# sum the emissions from coal, by year
+agg <-  aggregate(Emissions ~ year, coal, sum)
+
+# plot
+barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, main = "Coal Emissions by Year",
+        xlab = "Year", ylab = "Emissions (Tons)")
+
+```
+
 
 - How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
 
