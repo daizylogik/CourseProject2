@@ -19,7 +19,7 @@ plot3 <- ggplot(data = baltimore, aes(x = factor(year), y = Emissions, fill = ty
     facet_grid(.~type) + 
     geom_bar(stat = "identity") +
     guides(fill = FALSE) +
-    labs(x = "Year", y = "Emissions (Tons)", title = "Emissions in Baltimore By Type") 
+    labs(x = "Year", y = "Emissions (Kilo-Tons)", title = "Emissions in Baltimore By Type") 
 
 print(plot3)
 

@@ -13,7 +13,7 @@ baltimore <- subset(NEI, fips=="24510")
 # sum the emissions from NEI, by year
 agg <-  aggregate(Emissions ~ year, baltimore, sum)
 
-# show emissions in tons
+# show emissions in kilo-tons
 agg$Emissions <- agg$Emissions / 10^3
 
 
@@ -22,7 +22,7 @@ png(filename = pngFile, width = 480, height = 480)
 
 # plot
 barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, main = "Baltimore Emissions by Year",
-        xlab = "Year", ylab = "Emissions (Tons)")
+        xlab = "Year", ylab = "Emissions (Kilo-Tons)")
 
 # save png file
 dev.off()

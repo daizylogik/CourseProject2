@@ -24,7 +24,7 @@ png(filename = pngFile, width = 480, height = 480)
 
 # plot
 barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, main = "Coal Emissions by Year",
-        xlab = "Year", ylab = "Emissions (Tons)")
+        xlab = "Year", ylab = "Emissions (Kilo-Tons)")
 
 # save png file
 dev.off()

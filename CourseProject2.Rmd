@@ -145,22 +145,29 @@ barplot(height = agg$Emissions, horiz = FALSE, names.arg=agg$year, width = 1, ma
 
 ![plot5.png](plot5.png)
 
-- Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"|fips=="06037"). Which city has seen greater changes over time in motor vehicle emissions?
 
-## Including Code
+## Question 6 
+Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions?
 
-You can include R code in the document as follows:
+## Answer 6
+Los Angeles has experienced greater changes than Baltimore over time.
 
-```{r cars}
-summary(cars)
+```{r agg, echo = TRUE}
+merged <- merge(NEI, SCC, by = "SCC")
+cities <- subset(merged, fips == "24510" | fips == "06037")
+cities <- data.table(cities)
+
+vehicle <- cities[SCC.Level.Two %like% "Vehicle"]
+
+# display data in kilo-tons
+vehicle$Emissions <- vehicle$Emissions / 10^3
+
+# plot
+gp <- ggplot(vehicle, aes(year, Emissions, color = fips)) + geom_line(stat = "summary",fun.y = "sum") + 
+    labs(x = "Year", y = "Emissions (Kilo-Tons)", title = "Motor Vehicle Emissions in Baltimore and Los Angeles") +
+    scale_colour_discrete(name = "County", label = c("Los Angeles","Baltimore"))
+print(gp)
+
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+![plot6.png](plot6.png)
